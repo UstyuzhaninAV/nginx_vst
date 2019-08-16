@@ -1,9 +1,9 @@
-FROM nginx:1.12.0
+FROM nginx:1.16.1
 
 ENV NGINX_VERSION     "1.16.1"
 ENV NGINX_VTS_VERSION "0.1.18"
 
-RUN set-x \
+RUN set -ex \
   && echo "deb-src http://nginx.org/packages/debian/ stretch nginx" >> /etc/apt/sources.list \
   && apt-get update \
   && apt-get install -y dpkg-dev curl \
