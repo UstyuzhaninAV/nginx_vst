@@ -4,7 +4,7 @@ ENV NGINX_VERSION     "1.16.1"
 ENV NGINX_VTS_VERSION "0.1.18"
 
 RUN set -ex \
-  && echo "deb-src http://nginx.org/packages/debian/ stretch nginx" >> /etc/apt/sources.list \
+  && echo "deb-src http://nginx.org/packages/debian/ buster nginx" >> /etc/apt/sources.list \
   && apt-get update \
   && apt-get install -y dpkg-dev curl \
   && mkdir -p /opt/rebuildnginx \
@@ -18,7 +18,7 @@ RUN set -ex \
   && cd /opt/rebuildnginx/nginx-${NGINX_VERSION} \
   && dpkg-buildpackage -b \
   && cd /opt/rebuildnginx \
-  && dpkg --install nginx_${NGINX_VERSION}-1~stretch_amd64.deb \
+  && dpkg --install nginx_${NGINX_VERSION}-1~buster_amd64.deb \
   && apt-get remove --purge -y dpkg-dev curl && apt-get -y --purge autoremove && rm -rf /var/lib/apt/lists/*
 	# forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
