@@ -34,6 +34,7 @@ EXPOSE 80
 EXPOSE 443
 VOLUME /etc/letsencrypt
 
-STOPSIGNAL SIGTERM
+RUN rm -f /etc/nginx/conf.d/*
+COPY nginx_conf.d/ /etc/nginx/conf.d/
 ENTRYPOINT []
 CMD ["/bin/bash", "/scripts/entrypoint.sh"]
