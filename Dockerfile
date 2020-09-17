@@ -1,6 +1,6 @@
 FROM nginx:1.16.1
 
-ENV NGINX_VERSION     "1.18.0"
+ENV NGINX_VERSION     "1.19.2"
 ENV NGINX_VTS_VERSION "0.1.18"
 
 RUN set -ex \
